@@ -1,0 +1,65 @@
+<h4>The following compounds are reported to interact with {{targetName}}</h4>
+
+<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp table-bordered" >
+  <tr>
+    <th>Compounds/Target</th>
+    <th>Bioactivites</th>
+
+    <th>Reference</th>
+  </tr>
+  <tr *ngFor="let molecules of newMolecules">
+    <td>
+        <app-jsme [elementId]="getMoleculeId(molecules)"
+                  [width]="'100px'"
+                  [height]="'100px'"
+                  [option]="'depict nozoom noshowdraganddropsymbolindepictmode'"
+                  [molString]="getMoleculeSmiles(molecules)"
+        ></app-jsme>
+      <button mat-button color="primary" (click)="openMoleculePropertiesDialog(getMoleculeChemblId(molecules))">
+        {{getMoleculeChemblId(molecules)}}
+      </button>
+    </td>
+    <td>
+      <ng-container *ngFor="let mol of molecules">
+        <p>{{mol?.activity_standard_type}}&nbsp;&nbsp;&nbsp;{{mol?.activity_standard_value}}
+          ({{mol?.activity_standard_units}})</p>
+      </ng-container>
+    </td>
+    <td>
+      <ng-container *ngFor="let mole of molecules">
+        <p>
+          <a href="https://doi.org/{{mole?.doc_doi}}" target="_blank">{{mole?.doc_doi}}</a>
+            <button mat-button color="primary" (click)="openDocDialog(mole?.id)">(Detail)</button>
+        </p>
+      </ng-container>
+    </td>
+  </tr>
+</table>
+<div>
+  <div class="mdl-grid mdl-grid--no-spacing">
+    <div class="mdl-cell mdl-cell--3-col">
+      <br>
+      <p>
+        <strong>Bioactivities:</strong>
+        <mat-radio-group [(ngModel)]="selectedType" (change)="activityFilter()">
+          <mat-radio-button [value]="'all'">All</mat-radio-button>&nbsp;&nbsp;
+          <mat-radio-button [value]="'notEmpty'">NotEmpty</mat-radio-button>
+        </mat-radio-group>
+      </p>
+    </div>
+    <div class="mdl-cell mdl-cell--4-col mdl-typography--text-center">
+      <h5 class="mat-header-cell">
+        <b>{{tableTitle}}</b>
+      </h5>
+    </div>
+    <div class="mdl-cell mdl-cell--5-col">
+      <mat-paginator [length]="pageMeta?.total_results"
+                     [pageSize]="pageMeta?.per_page"
+                     [pageSizeOptions]="pageSizeOptions"
+                     (page)="pageChange($event)"
+      >
+      </mat-paginator>
+    </div>
+  </div>
+</div>
+

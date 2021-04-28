@@ -1,0 +1,67 @@
+<h1 class="text-position">GCDB HELP</h1>
+<br/>
+<mat-card>
+ <mat-card-content>
+   <p>1.The homepage contains nine pull-down menus: home, compound, target,
+     pathway, search, tool, links, help and contact in the toolbar, and users
+     can browse relevant entries by clicking their sub-menus. The corresponding
+     entries will be displayed.
+   </p>
+   <img mat-card-image src="assets/image/Picture1.png">
+   <mat-divider></mat-divider>
+   <br/>
+   <br/>
+   <p>2.In the search page, users can search various keywords, such as drug
+     name and protein name. Alternatively, users can search a specific structure
+     by sketching it in the JME applet window. Users can specify structure types
+     for query, such as substructure search and similarity search, and click the
+     “Search” button to deliver a query molecule to GCDB Server. The bioactive
+     molecules are returned with 3D similar to query molecule.
+   </p>
+   <img mat-card-image src="assets/image/Picture2.png" class="img">
+   <mat-divider></mat-divider>
+   <br/>
+   <br/>
+   <p>3.In the tool page, users can utilise the SEA online computing algorithm
+     tool to predict possible targets of a query molecule by clicking the “Target
+     Identification” sub-menu. Users can sketch a structure in the JME applet window
+     or input a molecule in SMILES format into the “SMILES” txt box as the query, and
+     click “Target Prediction” button to submit a job. The potential protein targets
+     will be returned in the result page after 2 ~ 3 min. The potential protein targets
+     are returned based on the predictive results of a multiple-voting SEA model with
+     four types of molecular fingerprints - topological, atom pair, maccs and morgan.
+     The P-value is used to indicate the significance of the raw similarity score.
+     Predictions with significance level P-values ≤ 0.05 are considered promising targets.
+   </p>
+   <img mat-card-image src="assets/image/Picture3.png">
+   <br/><br/>
+   <p>Users can upload a file with multiple molecules (at most 1000) stored in sdf or
+     SMILES formats via “Chemical Screening” sub-menus and provide a valid e-mail address
+     for receiving calculation results. A single protein can be selected one time in the
+     pull-down menus as the target for virtual screening. Users can click the “Submit”
+     button to deliver the query molecules to GCDB Server. After retrieving the users’
+     job successfully, the calculation starts on the backend server of GCDB. A typical
+     run containing a molecule takes 2 ~ 3 min, while the run time will depend on the
+     number of molecules.
+   </p>
+   <img mat-card-image src="assets/image/Picture4.png">
+   <mat-divider></mat-divider>
+   <br/>
+   <br/>
+   <p>4.In the links page, users can access to two independent algorithms
+     - “PharmMapper” and “ChemMapper” that use pharmacophore mapping approach and
+     the molecular 3D similarity calculation strategies, respectively, to identify
+     potential target candidates for the desired molecules.
+   </p>
+   <mat-divider></mat-divider>
+   <br/>
+   <p>5.GCDB was only test on the latest version of browser,
+     so please try the latest browser (google chrome , firefox, etc) if
+     you have any display problems.</p>
+   <mat-divider></mat-divider>
+   <br/>
+   <p>6.If there are any comments or suggestions, please contact Dr.
+     Jianping Lin at jianpinglin@nankai.edu.cn.
+   </p>
+ </mat-card-content>
+</mat-card>

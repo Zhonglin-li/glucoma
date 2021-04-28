@@ -1,0 +1,40 @@
+<!--layout loading -->
+<div *ngIf="loadingStatus">
+  <br/>
+  <h4 class="text-position">This load takes 3 minutes, please wait...</h4>
+</div>
+
+<!--layout loading is complete-->
+<div *ngIf="!loadingStatus">
+  <!--layout is empty, compounds.length === 0 -->
+  <div *ngIf="isEmpty">
+    <h4 class="text-position">Results of Target Prediction: no result</h4>
+  </div>
+
+  <!--the layout is not empty-->
+  <div *ngIf="!isEmpty">
+    <h4>Results of Target Prediction</h4>
+    <table width="100%" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+      <tr>
+        <th class="mdl-data-table__cell--non-numeric">Target ChEMBL ID</th>
+        <th class="mdl-data-table__cell--non-numeric">topological-hashed</th>
+        <th class="mdl-data-table__cell--non-numeric">atompair-hashed</th>
+        <th class="mdl-data-table__cell--non-numeric">maccs</th>
+        <th class="mdl-data-table__cell--non-numeric">morgan-hashed</th>
+      </tr>
+      <tr *ngFor="let target of targetPkls">
+        <td class="mdl-data-table__cell--non-numeric">
+          <button mat-button color="primary" (click)="goTargetDetail(target?.chembl_id)">{{target?.chembl_id}}
+          </button>
+        </td>
+        <td class="mdl-data-table__cell--non-numeric">{{target?.topological_hashed}}</td>
+        <td class="mdl-data-table__cell--non-numeric">{{target?.atompair_hashed}}</td>
+        <td class="mdl-data-table__cell--non-numeric">{{target?.maccs}}</td>
+        <td class="mdl-data-table__cell--non-numeric">{{target?.morgan_hashed}}</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+
+

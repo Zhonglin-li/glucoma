@@ -1,0 +1,74 @@
+<!-- <div class="panel">
+  <div class="panel-heading">
+    <h2 class="text-position">Chemical Screening</h2>
+  </div>
+  <div class="panel-body well">
+    <br/>
+    <form id="chemicalScreening"  class="form-horizontal"
+          [formGroup]="chemicalScreeningForm" (ngSubmit)="onSubmit()">
+      <br/>
+      <div class="form-group">
+        <label for="queryFile" class="control-label col-md-3">Query File:</label>
+        <div class="col-md-6">
+          <input type="file" id="queryFile"
+                 accept=".sdf, .smi"
+                 ng2FileSelect
+                 [uploader]="uploder"
+                 (change)="fileChange($event)"
+                 formControlName="queryFile"
+                 name="queryFile">
+          <p class="help-block">Please submit MDL sdf or SMILES format file!</p>
+        </div>
+        <div class="col-md-3">
+          <div  class="text-danger">
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email" class="control-label col-md-3">Email Address:</label>
+        <div class="col-md-6">
+          <input type="email" id="email" name="email"
+                 class="form-control" placeholder="Please input email address"
+                 formControlName="email">
+        </div>
+        <div class="col-md-3" *ngIf="email.invalid && (email.dirty || email.touched)">
+          <div class="text-danger" *ngIf="email.errors.required">
+            <small>*Email is required</small>
+          </div>
+          <div class="text-danger" *ngIf="email.errors.email">
+            <small>*Invalid email</small>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="target" class="control-label col-md-3">Selected Target:</label>
+        <div class="col-md-6">
+          <select name="targetName" id="target"
+                  class="form-control"
+                  formControlName="target">
+            <option *ngFor="let target of targets" [value]="target?.chemblid">{{target?.protein_description}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-md-3 col-md-offset-5">
+          <button class="btn btn-warning btn-sm" type="reset" >Reset</button>
+          <button class="btn btn-primary btn-sm" type="submit" [disabled]="chemicalScreeningForm.invalid">Submit</button>
+        </div>
+      </div>
+    </form>
+    <br/>
+    <div class="col-md-8 col-md-offset-2">
+      <h5 class="text-danger">Note:</h5>
+      <ul>
+        <li>ONLY MDL SDF and SMILES formats are supported</li>
+        <li>Both 2D and 3D structures can be used in the input file</li>
+        <li>Only 1000 molecules can be predicted at a time,
+          Do not submit files with more than 1000 molecules</li>
+        <li>Chemical screening results will be sent to your email</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+ -->

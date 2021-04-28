@@ -1,0 +1,138 @@
+/*@import "../../node_modules/bootstrap/less/bootstrap";*/
+/*@import "../../node_modules/bootswatch/cerulean/variables.less";*/
+/*@import "../../node_modules/bootswatch/cerulean/bootswatch.less";*/
+
+/*.router-body{*/
+/*margin-top: 100px;*/
+/*}*/
+/* @import '~@angular/material/core/theming/prebuilt/[one-of-the-themes].css'; */
+.goback{
+    top: 15%;
+    right: 3%;
+    position: fixed;
+    text-align: center;
+    z-index: 1;
+  }
+  
+  .scrolling-content {
+    overflow: auto;
+  }
+  
+  
+  /* .navbar  .navbar-brand {
+    color: #fff;
+  }
+  
+  
+  .navbar-default .navbar-nav>.open>a {
+    background: #178acc;
+  }
+  
+  .navbar-default .navbar-nav>li>a {
+    color: #fff;
+  }
+  
+  .dropdown-menu>li>a:hover,  .dropdown-menu>li>a:active {
+    color: #2FA4E7;
+  }
+  
+  .navbar {
+    background-image: linear-gradient(#2FA4E7,#2FA4E7 60%, #2FA4E7);
+    background-repeat: no-repeat;
+    border-bottom: 1px solid #2FA4E7;
+    -webkit-filter: none;
+    filter: none;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar-default {
+    background-color: #2FA4E7;
+    border-color: #2FA4E7;
+  }
+   */
+  .router-height {
+    min-height: 650px;
+  }
+  
+  .footer-style {
+    margin-top: 60px;
+    height: 80px;
+    clear: both;
+    background: #f2f3f5;
+    /*border-bottom: .6rem solid;*/
+    /*border-bottom-color: #56cc9d;*/
+    justify-content: center;
+    display: flex;
+    align-items: center;
+  }
+  
+  #app .layout .header .wrap {
+    display: flex;
+    justify-content: space-between;
+    width: 1100px;
+  }
+  #app .layout .header .wrap .left {
+    display: flex;
+  }
+  #app .layout .header .wrap .left h1 {
+    width: 157px;
+    color: #d3d3d3;
+    font-size: 26px;
+    margin-bottom: 0;
+    margin-right: 20px;
+    text-align: center;
+  }
+  #app .layout .header .wrap .left ul {
+    height: 64px;
+    line-height: 64px;
+  }
+  #app .layout .header .wrap .right {
+    display: flex;
+  }
+  #app .layout .header .wrap .right .member {
+    display: flex;
+    align-items: center;
+    color: #fff;
+  }
+  #app .layout .content {
+    background-color: #f2f2f2;
+  }
+  #app .layout .footer {
+    text-align: center;
+  }
+  :host ::ng-deep .ant-back-top {
+    bottom: 80px;
+  }
+  #nav{
+    background-color: rgb(122, 26, 98);
+    height: 80px;
+    
+  }
+  .navbar-brand>span{
+    color: white;
+    font-size: 33px;
+    font-weight: 10px;
+  }
+  .nav-link>span{
+    font-size: 25px;
+    /* color: rgb(69, 109, 128); */
+    color: white;
+    font-weight: 5px;
+  }
+  a:focus{
+    /* border:1px solid rgb(224, 177, 236); */
+    color: rgb(224, 177, 236);
+  } 
+  a>span:hover {
+    color: rgb(245, 118, 234);
+  }
+  .navbar-text{
+    font-size: 20px;
+    color: aliceblue;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-shadow: 2px 2px 3px grey;
+  }
+  span{
+    font-family: 'Times New Roman', Times, serif;
+  }
+  

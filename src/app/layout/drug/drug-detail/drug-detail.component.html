@@ -1,0 +1,93 @@
+<h4><b>{{drug?.drug_name}}</b> Basic Information</h4>
+<div class="mdl-grid">
+  <div class="mdl-cell mdl-cell--3-col">
+    <app-jsme [elementId]="'drug-detail'"
+              [width]="'250px'"
+              [height]="'320px'"
+              [option]="'depict nozoom noshowdraganddropsymbolindepictmode'"
+              [molString]="drug?.smiles"
+    ></app-jsme>
+  </div>
+  <div class="mdl-cell mdl-cell--9-col">
+    <table class="mdl-data-table mdl-js-data-table  mdl-shadow--2dp">
+      <tr>
+        <th class="th-width">Drug Name</th>
+        <td class="mdl-data-table__cell--non-numeric">{{drug?.drug_name}}</td>
+      </tr>
+      <tr>
+        <th class="th-width">Drug State</th>
+        <td class="mdl-data-table__cell--non-numeric">{{drug?.drug_state}}</td>
+      </tr>
+      <tr>
+        <th class="th-width">DrugBank ID</th>
+        <td class="mdl-data-table__cell--non-numeric">
+          <a href="https://www.drugbank.ca/drugs/{{drug?.drugbank_id}}" target="_blank">
+          {{drug?.drugbank_id}}</a>
+        </td>
+      </tr>
+      <tr>
+        <th class="th-width">IUPAC</th>
+        <td class="mdl-data-table__cell--non-numeric">{{drug?.IUPAC}}</td>
+      </tr>
+      <tr>
+        <th class="th-width">Smiles</th>
+        <td class="mdl-data-table__cell--non-numeric">{{drug?.smiles}}</td>
+      </tr>
+      <tr>
+        <th class="th-width">CAS</th>
+        <td class="mdl-data-table__cell--non-numeric">
+          <a href="http://www.molbase.com/en/search.html?search_keyword={{drug?.cas}}" target="_blank">
+            {{drug?.cas}}
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <th class="th-width">CID</th>
+        <td class="mdl-data-table__cell--non-numeric">
+          <a href="https://pubchem.ncbi.nlm.nih.gov/compound/{{drug?.cid}}" target="_blank">
+            {{drug?.cid}}
+          </a>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<!-- Calculated Compound Parent Properties-->
+<h4>Structure Information</h4>
+<table class="mdl-data-table mdl-js-data-table  mdl-shadow--2dp">
+  <tr>
+    <th class="mdl-data-table__cell--non-numeric">Molecule Formula</th>
+    <th class="mdl-data-table__cell--non-numeric">Mol Weight</th>
+    <th class="mdl-data-table__cell--non-numeric">PSA</th>
+    <th class="mdl-data-table__cell--non-numeric">AlogP</th>
+    <th class="mdl-data-table__cell--non-numeric">HBD</th>
+    <th class="mdl-data-table__cell--non-numeric">HBA</th>
+    <th class="mdl-data-table__cell--non-numeric">RTB</th>
+  </tr>
+  <tr>
+    <td class="mdl-data-table__cell--non-numeric">{{drug?.formula}}</td>
+    <td class="mdl-data-table__cell--non-numeric">{{drug?.mol_weight}}</td>
+    <td class="mdl-data-table__cell--non-numeric">{{drug?.psa}}</td>
+    <td class="mdl-data-table__cell--non-numeric">{{drug?.alogp}}</td>
+    <td class="mdl-data-table__cell--non-numeric">{{drug?.hbd}}</td>
+    <td class="mdl-data-table__cell--non-numeric">{{drug?.hba}}</td>
+    <td class="mdl-data-table__cell--non-numeric">{{drug?.rtb}}</td>
+  </tr>
+</table>
+<br/>
+<h4>Related Pathway Information</h4>
+<app-pathway-table
+[restUrl$]="pathwayRestUrl$"
+[pageSize]="5"
+[displayedColumns]="pathwayDisplayedColumns">
+</app-pathway-table>
+
+
+<h4>Relate Target Information</h4>
+<app-target-table
+[restUrl$]="targetRestUrl$"
+[pageSize]="5"
+[displayedColumns]="targetDisplayedColumns">
+</app-target-table>
+

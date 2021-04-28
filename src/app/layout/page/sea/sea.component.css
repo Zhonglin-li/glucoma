@@ -1,0 +1,21 @@
+.smile-container {
+  width: 95%;
+  height: 150px;
+  float: right;
+  margin-bottom: 0.5cm;
+}
+.font-color {
+  color: #c913f2;
+}
+
+.content-center {
+  height: 240px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.text-position {
+  text-align: center;
+}
+

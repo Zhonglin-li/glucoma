@@ -1,0 +1,16 @@
+.text-position {
+  text-align: center;
+}
+
+.box-border {
+  border: 1px solid #ddd;
+}
+
+.grid-border {
+  min-height: 300px;
+  border: 1px solid #ddd;
+}
+
+.jsme-border {
+  border: 1px solid #ddd;
+}
