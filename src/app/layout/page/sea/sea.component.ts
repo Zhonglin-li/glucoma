@@ -11,12 +11,21 @@ import {JsmeComponent} from "../../../jsme/jsme/jsme.component";
 export class SeaComponent implements OnInit {
   @ViewChild(JsmeComponent) jsme: JsmeComponent;
   jsmeSmiles: string;
+  public validation = '';
+  public choice: any = {
+    target: 'ACE',
+    targets: [
+      'ACE', 'AGTR1', 'AKR1B1', 'AR', 'FLT1',
+      'ICAM1', 'KDR', 'MAPT', 'NOS2',
+      'NOS3', 'PRKCB', 'SERPINE1', 'SLC2A1', 'TNF', 'VCAM1'
+    ],
+  };
   constructor(private router: Router) {
 
   }
 
   ngOnInit() {
-    this.jsmeSmiles = 'CNCC(O)c1ccc(OC(=O)C(C)(C)C)c(OC(=O)C(C)(C)C)c1';
+    this.jsmeSmiles = '';
   }
 
 
@@ -24,10 +33,11 @@ export class SeaComponent implements OnInit {
     this.jsmeSmiles = this.jsme.smiles;
   }
 
-  goTargetPrediction(smiles: string) {
+  goTargetPrediction() {
     this.router.navigate(['target/target-prediction'], {
       queryParams: {
-        smiles: smiles
+        smiles: this.jsmeSmiles,
+        target: this.choice.target
       }
     })
   }

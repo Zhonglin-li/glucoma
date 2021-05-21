@@ -10,7 +10,7 @@ import {RestService} from '../../../service/rest/rest.service';
 })
 
 export class ContactComponent implements OnInit {
-title = 'Want to get in  touch with me? Please fill this form!';
+title = 'Want to get in  touch with us? Please fill this form!';
 contactForm: FormGroup;
 
 constructor(private router: Router,

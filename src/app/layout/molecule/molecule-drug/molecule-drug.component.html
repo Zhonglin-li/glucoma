@@ -1,9 +1,9 @@
 <!--Data Not Empty-->
 <div *ngIf="drugs || drugForTargets || molecules">
-  <h3 class="text-position">{{structureType | titlecase}} Search Results</h3>
+  <h3 class="text-position badge badge-pill badge-info">{{structureType | titlecase}} Search Results</h3>
   <!--Drugs table-->
   <div *ngIf="drugs">
-    <h4>Drugs for Glaucoma Treatment</h4>
+    <h4>Drugs for Diabetes Treatment</h4>
     <table mat-table #drugTable [dataSource]="drugDataSource" class="box-border data-table">
       <ng-container matColumnDef="drugbank_id">
         <th mat-header-cell *matHeaderCellDef>DrugBank ID</th>
@@ -15,6 +15,9 @@
                     [molString]="row.smiles"
           >
           </app-jsme>
+          <a [href]="row.molecule_chembl_id_url" target="_blank">
+            <button mat-button color="primary">{{row.molecule_chembl_id}}</button>
+          </a>
           <button mat-button color="primary" (click)="gotoDrugDetail(row.id)">
             {{row.drugbank_id}}</button>
         </td>
@@ -79,11 +82,11 @@
   <div *ngIf="drugForTargets">
     <h4>Drugs for Treatment of Other Disease
     </h4>
-    <table mat-table #drugForTargetTable [dataSource]="drugForTargetDataSource" class="box-border data-table">
+    <table mat-table #drugForTargetTable [dataSource]="drugForTargetDataSource" class=" mat-elevation-z8 mdl-data-table mdl-js-data-table box-border data-table">
       <ng-container matColumnDef="drugbank_id">
-        <th mat-header-cell *matHeaderCellDef>DrugBank ID</th>
-        <td mat-cell *matCellDef="let row">
-          <app-jsme [elementId]="row.id + row.drug_name"
+        <th mat-header-cell *matHeaderCellDef class="mdl-data-table__cell--non-numeric">DrugBank ID</th>
+        <td mat-cell *matCellDef="let row"  class="mdl-data-table__cell--non-numeric">
+          <app-jsme [elementId]="row.id "
                     [width]="'100px'"
                     [height]="'100px'"
                     [option]="'depict nozoom noshowdraganddropsymbolindepictmode'"
@@ -95,45 +98,45 @@
       </ng-container>
 
       <ng-container matColumnDef="drug_name">
-        <th mat-header-cell *matHeaderCellDef>Drug Name</th>
-        <td mat-cell *matCellDef="let row">
+        <th mat-header-cell *matHeaderCellDef class="mdl-data-table__cell--non-numeric">Drug Name</th>
+        <td mat-cell *matCellDef="let row"  class="mdl-data-table__cell--non-numeric">
           <a href="{{row.url}}" target="_blank">{{row.generic_name}}</a>
         </td>
       </ng-container>
 
       <ng-container matColumnDef="formula">
-        <th mat-header-cell *matHeaderCellDef>Formula</th>
-        <td mat-cell *matCellDef="let row">{{row.formula}}</td>
+        <th mat-header-cell *matHeaderCellDef  class="mdl-data-table__cell--non-numeric">Formula</th>
+        <td mat-cell *matCellDef="let row" class="mdl-data-table__cell--non-numeric">{{row.formula}}</td>
       </ng-container>
 
       <ng-container matColumnDef="mol_weight">
-        <th mat-header-cell *matHeaderCellDef>Mol Weight</th>
-        <td mat-cell *matCellDef="let row">{{row.mol_weight}}</td>
+        <th mat-header-cell *matHeaderCellDef class="mdl-data-table__cell--non-numeric">Mol Weight</th>
+        <td mat-cell *matCellDef="let row" class="mdl-data-table__cell--non-numeric">{{row.mol_weight}}</td>
       </ng-container>
 
       <ng-container matColumnDef="alogp">
-        <th mat-header-cell *matHeaderCellDef>ALogP</th>
-        <td mat-cell *matCellDef="let row">{{row.alogp}}</td>
+        <th mat-header-cell *matHeaderCellDef class="mdl-data-table__cell--non-numeric">ALogP</th>
+        <td mat-cell *matCellDef="let row" class="mdl-data-table__cell--non-numeric">{{row.alogp}}</td>
       </ng-container>
 
       <ng-container matColumnDef="hba">
-        <th mat-header-cell *matHeaderCellDef>HBA</th>
-        <td mat-cell *matCellDef="let row">{{row.hba}}</td>
+        <th mat-header-cell *matHeaderCellDef class="mdl-data-table__cell--non-numeric">HBA</th>
+        <td mat-cell *matCellDef="let row" class="mdl-data-table__cell--non-numeric">{{row.hba}}</td>
       </ng-container>
 
       <ng-container matColumnDef="hbd">
-        <th mat-header-cell *matHeaderCellDef>HBD</th>
-        <td mat-cell *matCellDef="let row">{{row.hbd}}</td>
+        <th mat-header-cell *matHeaderCellDef class="mdl-data-table__cell--non-numeric">HBD</th>
+        <td mat-cell *matCellDef="let row" class="mdl-data-table__cell--non-numeric">{{row.hbd}}</td>
       </ng-container>
 
       <ng-container matColumnDef="rtb">
-        <th mat-header-cell *matHeaderCellDef>RTB</th>
-        <td mat-cell *matCellDef="let row">{{row.rtb}}</td>
+        <th mat-header-cell *matHeaderCellDef class="mdl-data-table__cell--non-numeric">RTB</th>
+        <td mat-cell *matCellDef="let row" class="mdl-data-table__cell--non-numeric">{{row.rtb}}</td>
       </ng-container>
 
       <ng-container matColumnDef="psa">
-        <th mat-header-cell *matHeaderCellDef>PSA</th>
-        <td mat-cell *matCellDef="let row">{{row.psa}}</td>
+        <th mat-header-cell *matHeaderCellDef class="mdl-data-table__cell--non-numeric">PSA</th>
+        <td mat-cell *matCellDef="let row" class="mdl-data-table__cell--non-numeric">{{row.psa}}</td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="drugForTargetDisplayedColumns"></tr>
@@ -152,10 +155,10 @@
   <div *ngIf="molecules">
     <h4>ChEMBL Compounds</h4>
     <table mat-table #moleculeTable [dataSource]="moleculesDataSource"
-               class="box-border data-table">
+               class="mat-elevation-z8 box-border data-table mdl-data-table mdl-js-data-table">
       <ng-container matColumnDef="chembl_id">
-        <th mat-header-cell *matHeaderCellDef>ChEMBL ID</th>
-        <td mat-cell *matCellDef="let row">
+        <th mat-header-cell *matHeaderCellDef class="mdl-data-table__cell--non-numeric">ChEMBL ID</th>
+        <td mat-cell *matCellDef="let row" class="mdl-data-table__cell--non-numeric">
           <app-jsme [elementId]="row.id"
                     [width]="'100px'"
                     [height]="'100px'"
@@ -170,43 +173,43 @@
       </ng-container>
 
       <ng-container matColumnDef="formula">
-        <th mat-header-cell *matHeaderCellDef>Formula</th>
-        <td mat-cell *matCellDef="let row">{{row.formula}}</td>
+        <th mat-header-cell *matHeaderCellDef class="mdl-data-table__cell--non-numeric">Formula</th>
+        <td mat-cell *matCellDef="let row" class="mdl-data-table__cell--non-numeric">{{row.formula}}</td>
       </ng-container>
 
       <ng-container matColumnDef="mol_weight">
-        <th mat-header-cell *matHeaderCellDef>Mol Weight</th>
-        <td mat-cell *matCellDef="let row">{{row.mol_weight}}</td>
+        <th mat-header-cell *matHeaderCellDef class="mdl-data-table__cell--non-numeric">Mol Weight</th>
+        <td mat-cell *matCellDef="let row" class="mdl-data-table__cell--non-numeric">{{row.mol_weight}}</td>
       </ng-container>
 
       <ng-container matColumnDef="alogp">
-        <th mat-header-cell *matHeaderCellDef>ALogP</th>
-        <td mat-cell *matCellDef="let row">{{row.alogp}}</td>
+        <th mat-header-cell *matHeaderCellDef class="mdl-data-table__cell--non-numeric">ALogP </th>
+        <td mat-cell *matCellDef="let row" class="mdl-data-table__cell--non-numeric">{{row.alogp}}</td>
       </ng-container>
 
       <ng-container matColumnDef="hba">
-        <th mat-header-cell *matHeaderCellDef>HBA</th>
-        <td mat-cell *matCellDef="let row">{{row.hba}}</td>
+        <th mat-header-cell *matHeaderCellDef class="mdl-data-table__cell--non-numeric">HBA</th>
+        <td mat-cell *matCellDef="let row" class="mdl-data-table__cell--non-numeric">{{row.hba}}</td>
       </ng-container>
 
       <ng-container matColumnDef="hbd">
-        <th mat-header-cell *matHeaderCellDef>HBD</th>
-        <td mat-cell *matCellDef="let row">{{row.hbd}}</td>
+        <th mat-header-cell *matHeaderCellDef class="mdl-data-table__cell--non-numeric">HBD</th>
+        <td mat-cell *matCellDef="let row" class="mdl-data-table__cell--non-numeric">{{row.hbd}}</td>
       </ng-container>
 
       <ng-container matColumnDef="rtb">
-        <th mat-header-cell *matHeaderCellDef>RTB</th>
-        <td mat-cell *matCellDef="let row">{{row.rtb}}</td>
+        <th mat-header-cell *matHeaderCellDef class="mdl-data-table__cell--non-numeric">RTB</th>
+        <td mat-cell *matCellDef="let row" class="mdl-data-table__cell--non-numeric">{{row.rtb}}</td>
       </ng-container>
 
       <ng-container matColumnDef="psa">
-        <th mat-header-cell *matHeaderCellDef>PSA</th>
-        <td mat-cell *matCellDef="let row">{{row.psa}}</td>
+        <th mat-header-cell *matHeaderCellDef class="mdl-data-table__cell--non-numeric">PSA</th>
+        <td mat-cell *matCellDef="let row" class="mdl-data-table__cell--non-numeric">{{row.psa}}</td>
       </ng-container>
 
       <ng-container matColumnDef="targets">
-        <th mat-header-cell *matHeaderCellDef>Targets</th>
-        <td mat-cell *matCellDef="let row">
+        <th mat-header-cell *matHeaderCellDef class="mdl-data-table__cell--non-numeric">Targets</th>
+        <td mat-cell *matCellDef="let row" class="mdl-data-table__cell--non-numeric">
           <button mat-button color="primary" (click)="goTargetList(row.molecule_chembl_id)">view</button>
         </td>
       </ng-container>

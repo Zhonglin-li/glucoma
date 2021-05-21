@@ -16,7 +16,7 @@ export class SearchComponent implements OnInit {
   jsmeSmiles: string;
   structureTypes = ['structure', 'substructure'];
   structureType = this.structureTypes[0];
-  similarity = 0.7;
+  similarity = 0.85;
   public validation = '';
   public filter: any = {
     mode: 'By Inputting Drug',
@@ -49,7 +49,7 @@ export class SearchComponent implements OnInit {
               ) { };
 
   ngOnInit() {
-    // this.jsmeSmiles = 'CNCC(O)c1ccc(OC(=O)C(C)(C)C)c(OC(=O)C(C)(C)C)c1';
+    // this.jsmeSmiles = 'FC1=CC=C2OCC[C@]3(NC(=O)NC3=O)C2=C1';
   }
 
   getJsmeSmiles() {
@@ -121,6 +121,7 @@ export class SearchComponent implements OnInit {
 
 
   onSubmit(smiles: string) {
+    console.log(this.structureType, smiles, this.similarity)
     // console.log(this.structureType,smiles, this.similarity)
       if (this.structureType === 'structure') {
         this.router.navigate(['molecule/molecule-drug'], {queryParams: {

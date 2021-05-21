@@ -5,19 +5,19 @@
 
   <mat-table #pathwayTable [dataSource]="dataSource"
             matSort matSortDisableClear
-              matSortActive="target_count"
+            matSortActive="target_count"
              matSortDirection="desc"
              class="mat-elevation-z8" role='grid'>
     <ng-container matColumnDef="pathway_id">
       <mat-header-cell *matHeaderCellDef>Pathway ID</mat-header-cell>
       <mat-cell *matCellDef="let row">
-        <a href="{{row.url}}" target="_blank">{{row.pathway_id}}</a>
+        <a href="{{row.url}}" target="_blank">{{row.pathway_name}}</a>
       </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="pathway_name">
       <mat-header-cell *matHeaderCellDef>Pathway Name</mat-header-cell>
-      <mat-cell *matCellDef="let row">{{row.pathway_name}}</mat-cell>
+      <mat-cell *matCellDef="let row">{{row.descripor}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="target_count">

@@ -1,4 +1,4 @@
-<h4>List of Drugs for Glaucoma Treatment</h4>
+<h4 class="badge badge-pill badge-info">List of Drugs for Diabetes Treatment</h4>
 <div class="mdl-grid grid-border">
   <div class="mdl-cell mdl-cell--3-col jsme-border" *ngFor="let drug of drugs">
     <app-jsme [elementId]="drug?.id"
@@ -8,7 +8,7 @@
               [molString]="drug?.smiles"
     ></app-jsme>
     <button mat-button color="primary" (click)="gotoDrugDetail(drug?.id)">{{drug?.drug_name}}</button>
-    <a (click)="gotoDrugDetail(drug?.id)">({{drug?.drug_state | stringTrim}})</a>
+    <p style="word-break:break-all;">&nbsp;&nbsp;&nbsp;&nbsp;<a (click)="gotoDrugDetail(drug?.id)" style="color: #007bff;">({{drug?.drug_state | stringTrim}})</a></p>
   </div>
 </div>
 <div>

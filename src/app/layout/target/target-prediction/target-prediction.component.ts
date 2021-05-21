@@ -1,7 +1,8 @@
 import {Component, OnDestroy, OnInit} from "@angular/core";
 import {RestService} from "../../../service/rest/rest.service";
 import {ActivatedRoute, ParamMap, Router} from "@angular/router";
-import {TargetPkl} from "../../../glu/models/target-pkl";
+// import {TargetPkl} from "../../../glu/models/target-pkl";
+import {TargetPre} from '../../../glu/models/target-pre'
 import {GlobalService} from "../../../service/global/global.service";
 import {Subscription} from "rxjs";
 
@@ -11,8 +12,10 @@ import {Subscription} from "rxjs";
 })
 
 export class TargetPredictionComponent implements OnInit, OnDestroy {
-  targetPkls: TargetPkl[];
+  // targetPkls: TargetPkl[];
+  targets: any;
   includeParam = '';
+  target:string;
   loadingStatus: boolean;
   isEmpty = false;
   smiles: string;
@@ -43,6 +46,7 @@ export class TargetPredictionComponent implements OnInit, OnDestroy {
     this.route.queryParamMap
       .subscribe((params: ParamMap) => {
           this.smiles = params.get('smiles');
+          this.target = params.get('target');
           this.postTargetPrediction();
         },
         error => {
@@ -53,13 +57,15 @@ export class TargetPredictionComponent implements OnInit, OnDestroy {
 
 
   postTargetPrediction() {
-    this.SeaSubscription = this.rest.postTargetPrediction(this.smiles, this.includeParam)
+    this.SeaSubscription = this.rest.postTargetPrediction(this.smiles, this.target, this.includeParam)
       .subscribe(data => {
         // layout include one or more targets
-        this.targetPkls = data;
+        console.log(this.target)
+        this.targets = data;
+        // console.log(this.targets)
 
         // if targets is non-layout, no display;
-        if (this.targetPkls.length === 0) {
+        if (this.targets.length === 0) {
           this.isEmpty = true;
         }
       })

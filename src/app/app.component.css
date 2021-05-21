@@ -19,8 +19,9 @@
   }
   
   
-  /* .navbar  .navbar-brand {
+  .navbar  .navbar-brand {
     color: #fff;
+    font-size: 30px;
   }
   
   
@@ -43,13 +44,14 @@
     -webkit-filter: none;
     filter: none;
     box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+    height: 70px;
   }
   
   .navbar-default {
     background-color: #2FA4E7;
     border-color: #2FA4E7;
   }
-   */
+  
   .router-height {
     min-height: 650px;
   }
@@ -65,8 +67,39 @@
     display: flex;
     align-items: center;
   }
+  :host ::ng-deep .ant-back-top {
+    bottom: 80px;
+  }
+  #nav{
+    background-color: rgb(122, 26, 98);
+    height: 80px;
+    
+  }
+  .navbar-brand>span{
+    color: white;
+    font-size: 20px;
+    font-weight: 10px;
+  }
+  .nav-link>span{
+    font-size: 22px;
+    color: white;
+    font-weight: 5px;
+  }
+  a:focus{
+    color: rgb(224, 177, 236);
+  } 
+  a>span:hover {
+    color: rgb(245, 118, 207);
+  }
+  .navbar-text{
+    font-size: 20px;
+    color: aliceblue;
+   
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-shadow: 2px 2px 3px grey;
+  } 
   
-  #app .layout .header .wrap {
+  /* #app .layout .header .wrap {
     display: flex;
     justify-content: space-between;
     width: 1100px;
@@ -115,12 +148,10 @@
   }
   .nav-link>span{
     font-size: 25px;
-    /* color: rgb(69, 109, 128); */
     color: white;
     font-weight: 5px;
   }
   a:focus{
-    /* border:1px solid rgb(224, 177, 236); */
     color: rgb(224, 177, 236);
   } 
   a>span:hover {
@@ -131,8 +162,10 @@
     color: aliceblue;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-shadow: 2px 2px 3px grey;
-  }
+  } */
   span{
-    font-family: 'Times New Roman', Times, serif;
+    font-family: "Helvetica","Arial",sans-serif;
+    font-size: 20px;
+    /* font-family: 'Times New Roman', Times, serif; */
   }
   

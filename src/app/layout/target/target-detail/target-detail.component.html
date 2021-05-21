@@ -1,83 +1,124 @@
-<h4><b>Detail Information of {{target?.protein_description}}</b></h4>
-<table class="mdl-data-table  mdl-shadow--2dp">
-  <tr>
-    <th>ChEMBL ID</th>
-    <td class="mdl-data-table__cell--non-numeric">
-      <a href="https://www.ebi.ac.uk/chembl/target/inspect/{{target?.chemblid}}" target="_blank">
-        {{target?.chemblid}}
-      </a>
-    </td>
-  </tr>
-  <tr>
-    <th>Target Name</th>
-    <td class="mdl-data-table__cell--non-numeric">{{target?.protein_description}}</td>
-  </tr>
-  <tr>
-    <th>KEGG</th>
-    <td class="mdl-data-table__cell--non-numeric">
-      <a href="{{target?.kegg_url}}" target="_blank">
-       {{target?.keggid}}
-      </a>
-    </td>
-  </tr>
-  <tr>
-    <th>Uniprot Accession</th>
-    <td class="mdl-data-table__cell--non-numeric">
-      <a href="http://www.uniprot.org/uniprot/{{target?.uniprot_accession}}" target="_blank">
-        {{target?.uniprot_accession}}
-      </a>
-    </td>
-  </tr>
-  <tr>
-    <th>Entry Name</th>
-    <td class="mdl-data-table__cell--non-numeric">{{target?.entry_name}}</td>
-  </tr>
-  <tr>
-    <th>Gene</th>
-    <td class="mdl-data-table__cell--non-numeric">{{target?.gene}}</td>
-  </tr>
-  <tr>
-    <th>Pathway</th>
-    <td class="mdl-data-table__cell--non-numeric">
-      <ng-container *ngFor="let pathway of pathways">
-        <a href="{{pathway.url}}">{{pathway.pathway_name}}&nbsp;&nbsp;&nbsp;</a>
-      </ng-container>
-    </td>
-  </tr>
-  <tr>
-    <th>Drug for Glaucoma Treatment</th>
-    <td class="mdl-data-table__cell--non-numeric">
-      <ng-container *ngFor="let drug of drugs">
-        <button mat-button  color="primary" (click)="gotoDrugDetail(drug?.id)">
-          {{drug.drug_name}}
-        </button>
-      </ng-container>
-    </td>
-  </tr>
-  <tr>
-    <th>Drug targeting glaucoma <br/>related proteins for <br/>treatment of other diseases</th>
-    <td class="mdl-data-table__cell--non-numeric">
-      <ng-container *ngFor="let drugbankid of drugbankIds">
-        <a href="{{drugbankid?.url}}" target="_blank">{{drugbankid?.drugbank_id}}</a>&nbsp;
-      </ng-container>
-    </td>
-  </tr>
-  <tr>
-    <th>Related Molecules</th>
-    <td class="mdl-data-table__cell--non-numeric">
-      <button mat-button color="primary" (click)="goMoleculeDetail(target?.id, target?.protein_description)">
-        Compounds({{target?.compound_count}});
-        <ng-container *ngIf="!target?.compound_count">Compounds(0);</ng-container>
-      </button>&nbsp;&nbsp;&nbsp;
-      <button mat-button color="primary" (click)="goMoleculeDetail(target?.id, target?.protein_description)">
-        Bioactivities({{target?.bioactivity_count}});
-        <ng-container *ngIf="!target?.bioactivity_count">Bioactivities(0);</ng-container>
-      </button>&nbsp;&nbsp;&nbsp;
-      <button mat-button color="primary" (click)="goMoleculeDetail(target?.id, target?.protein_description)">
-        References({{target?.reference_count}})
-        <ng-container *ngIf="!target?.reference_count">References(0)</ng-container>
-      </button>&nbsp;&nbsp;&nbsp;
-    </td>
-  </tr>
-
+<h4>
+  <b class="badge badge-pill badge-info">Detail Information of {{ target?.protein_description }}</b>
+</h4>
+<table class="table mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+  <tbody>
+    <tr>
+      <th scope="row" class="mdl-data-table__cell--non-numeric">ChEMBL ID</th>
+      <td class="mdl-data-table__cell--non-numeric">
+        <a
+          href="https://www.ebi.ac.uk/chembl/target/inspect/{{
+            target?.chemblid
+          }}"
+          target="_blank"
+        >
+          {{ target?.chemblid }}
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row" class="mdl-data-table__cell--non-numeric">Target Name</th>
+      <td class="mdl-data-table__cell--non-numeric">
+        {{ target?.protein_description }}
+      </td>
+    </tr>
+    <tr>
+      <th scope="row" class="mdl-data-table__cell--non-numeric">KEGG</th>
+      <td class="mdl-data-table__cell--non-numeric">
+        <a href="{{ target?.kegg_url }}" target="_blank">
+          {{ target?.keggid }}
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row" class="mdl-data-table__cell--non-numeric">Uniprot Accession</th>
+      <td class="mdl-data-table__cell--non-numeric">
+        <a
+          href="http://www.uniprot.org/uniprot/{{ target?.uniprot_accession }}"
+          target="_blank"
+        >
+          {{ target?.uniprot_accession }}
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row" class="mdl-data-table__cell--non-numeric">Entry Name</th>
+      <td class="mdl-data-table__cell--non-numeric">
+        {{ target?.entry_name }}
+      </td>
+    </tr>
+    <tr>
+      <th scope="row" class="mdl-data-table__cell--non-numeric">Gene</th>
+      <td class="mdl-data-table__cell--non-numeric">{{ target?.gene }}</td>
+    </tr>
+    <tr>
+      <th scope="row" class="mdl-data-table__cell--non-numeric">Pathway</th>
+      <td class="mdl-data-table__cell--non-numeric">
+        <ng-container *ngFor="let pathway of pathways">
+          <a href="{{ pathway.url }}"
+            >{{ pathway.pathway_name }}&nbsp;&nbsp;&nbsp;</a
+          >
+        </ng-container>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row" class="mdl-data-table__cell--non-numeric">Drug for Diabetes Treatment</th>
+      <td class="mdl-data-table__cell--non-numeric">
+        <ng-container *ngFor="let drug of drugs">
+          <button mat-button color="primary" (click)="gotoDrugDetail(drug?.id)">
+            {{ drug.drug_name }}
+          </button>
+        </ng-container>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row" class="mdl-data-table__cell--non-numeric">
+        Drug targeting Diabetes <br />related proteins for <br />treatment of
+        other diseases
+      </th>
+      <td class="mdl-data-table__cell--non-numeric">
+        <ng-container *ngFor="let drugbankid of drugbankIds">
+          <a href="{{ drugbankid?.url }}" target="_blank">{{
+            drugbankid?.drugbank_id
+          }}</a
+          >&nbsp;
+        </ng-container>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row" class="mdl-data-table__cell--non-numeric">Related Molecules</th>
+      <td class="mdl-data-table__cell--non-numeric">
+        <button
+          mat-button
+          color="primary"
+          (click)="goMoleculeDetail(target?.id, target?.protein_description)"
+        >
+          Compounds({{ target?.compound_count }});
+          <ng-container *ngIf="!target?.compound_count"
+            >Compounds(0);</ng-container
+          ></button
+        >&nbsp;&nbsp;&nbsp;
+        <button
+          mat-button
+          color="primary"
+          (click)="goMoleculeDetail(target?.id, target?.protein_description)"
+        >
+          Bioactivities({{ target?.bioactivity_count }});
+          <ng-container *ngIf="!target?.bioactivity_count"
+            >Bioactivities(0);</ng-container
+          ></button
+        >&nbsp;&nbsp;&nbsp;
+        <button
+          mat-button
+          color="primary"
+          (click)="goMoleculeDetail(target?.id, target?.protein_description)"
+        >
+          References({{ target?.reference_count }})
+          <ng-container *ngIf="!target?.reference_count"
+            >References(0)</ng-container
+          ></button
+        >&nbsp;&nbsp;&nbsp;
+      </td>
+    </tr>
+  </tbody>
 </table>

@@ -1,7 +1,19 @@
 <!--layout loading -->
 <div *ngIf="loadingStatus">
   <br/>
-  <h4 class="text-position">This load takes 3 minutes, please wait...</h4>
+  <span class="text-position" style="font-size: 20px;">This load will take a few seconds, please wait...</span>
+  &nbsp;
+  <div class="spinner-grow text-info" role="status" style="width: 3rem; height: 3rem;">
+    <span class="sr-only">Loading...</span>
+  </div>
+  &nbsp;&nbsp;
+  <div class="spinner-grow text-info" role="status" style="width: 2rem; height: 2rem;">
+    <span class="sr-only">Loading...</span>
+  </div>
+  &nbsp;&nbsp;
+  <div class="spinner-grow text-info" role="status" style="width: 1rem; height: 1rem;">
+    <span class="sr-only">Loading...</span>
+  </div>
 </div>
 
 <!--layout loading is complete-->
@@ -13,26 +25,70 @@
 
   <!--the layout is not empty-->
   <div *ngIf="!isEmpty">
-    <h4>Results of Target Prediction</h4>
+    <h2 class="badge badge-pill badge-info">Results of Target Prediction</h2>
     <table width="100%" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
-      <tr>
-        <th class="mdl-data-table__cell--non-numeric">Target ChEMBL ID</th>
-        <th class="mdl-data-table__cell--non-numeric">topological-hashed</th>
-        <th class="mdl-data-table__cell--non-numeric">atompair-hashed</th>
-        <th class="mdl-data-table__cell--non-numeric">maccs</th>
-        <th class="mdl-data-table__cell--non-numeric">morgan-hashed</th>
-      </tr>
-      <tr *ngFor="let target of targetPkls">
-        <td class="mdl-data-table__cell--non-numeric">
-          <button mat-button color="primary" (click)="goTargetDetail(target?.chembl_id)">{{target?.chembl_id}}
-          </button>
-        </td>
-        <td class="mdl-data-table__cell--non-numeric">{{target?.topological_hashed}}</td>
-        <td class="mdl-data-table__cell--non-numeric">{{target?.atompair_hashed}}</td>
-        <td class="mdl-data-table__cell--non-numeric">{{target?.maccs}}</td>
-        <td class="mdl-data-table__cell--non-numeric">{{target?.morgan_hashed}}</td>
-      </tr>
+      <thead>
+        <tr>
+          <th scope="col" >Target ChEMBL ID</th>
+          <th scope="col">Model</th>
+          <th scope="col" >prediction result</th>
+          <!-- <th class="mdl-data-table__cell--non-numeric">atompair-hashed</th>
+          <th class="mdl-data-table__cell--non-numeric">maccs</th>
+          <th class="mdl-data-table__cell--non-numeric">morgan-hashed</th> -->
+        </tr>
+      </thead>
+      <tbody *ngFor="let t of targets">
+        <tr>
+          <th scope="row" rowspan="9" >
+            <button mat-button color="primary" (click)="goTargetDetail(t?.chembl_id)">{{t?.chembl_id}}
+            </button>
+          </th>
+          <td class="mdl-data-table__cell--non-numeric">ECFP of {{target}}(MLP nn)</td>
+          <td class="mdl-data-table__cell--non-numeric">{{t?.ecfp_nn}}</td>
+
+          <!-- <td class="mdl-data-table__cell--non-numeric">{{target?.atompair_hashed}}</td>
+          <td class="mdl-data-table__cell--non-numeric">{{target?.maccs}}</td>
+          <td class="mdl-data-table__cell--non-numeric">{{target?.morgan_hashed}}</td> -->
+        </tr>
+        <tr>
+          <td class="mdl-data-table__cell--non-numeric">ECFP of {{target}}(Random forest)</td>
+          <td class="mdl-data-table__cell--non-numeric">{{t?.ecfp_rf}}</td>
+        </tr>
+        <tr>
+          <td class="mdl-data-table__cell--non-numeric">ECFP of {{target}}(SVM)</td>
+          <td class="mdl-data-table__cell--non-numeric">{{t?.ecfp_svm}}</td>
+        </tr>
+        <tr>
+          <td class="mdl-data-table__cell--non-numeric">ECFP of {{target}}(Decision Tree)</td>
+          <td class="mdl-data-table__cell--non-numeric">{{t?.ecfp_tree}}</td>
+        </tr>
+        <tr>
+          <td class="mdl-data-table__cell--non-numeric">MACCS of {{target}}(MLP nn)</td>
+          <td class="mdl-data-table__cell--non-numeric">{{t?.maccs_nn}}</td>
+        </tr>
+        <tr>
+          <td class="mdl-data-table__cell--non-numeric">MACCS of {{target}}(Random forest)</td>
+          <td class="mdl-data-table__cell--non-numeric">{{t?.maccs_rf}}</td>
+        </tr>
+        <tr>
+          <td class="mdl-data-table__cell--non-numeric">MACCS of {{target}}(SVM)</td>
+          <td class="mdl-data-table__cell--non-numeric">{{t?.maccs_svm}}</td>
+        </tr>
+        <tr>
+          <td class="mdl-data-table__cell--non-numeric">MACCS of {{target}}(Decision Tree)</td>
+          <td class="mdl-data-table__cell--non-numeric">{{t?.maccs_tree}}</td>
+          
+        </tr>
+        <tr>
+          <td class="mdl-data-table__cell--non-numerr">Comprehensive evaluation result</td>
+          <td class="mdl-data-table__cell--non-numeric">{{t?.prediction_result}}</td>
+        </tr>
+      </tbody>
+      
+      
     </table>
+    <br>
+    <small class="alert alert-primary" role="alert">Note: 1 means using this model to predict that we a positive result, while 0 is the opposite. </small>
   </div>
 </div>
 

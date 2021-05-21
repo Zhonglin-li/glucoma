@@ -1,4 +1,4 @@
-<h4>The following compounds are reported to interact with {{targetName}}</h4>
+<h4 class="badge badge-pill badge-info">The following compounds are reported to interact with {{targetName}}</h4>
 
 <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp table-bordered" >
   <tr>
@@ -21,16 +21,20 @@
     </td>
     <td>
       <ng-container *ngFor="let mol of molecules">
-        <p>{{mol?.activity_standard_type}}&nbsp;&nbsp;&nbsp;{{mol?.activity_standard_value}}
-          ({{mol?.activity_standard_units}})</p>
+        <p>{{mol?.activity_standard_type === 'nan'?'':mol?.activity_standard_type}}&nbsp;&nbsp;&nbsp;{{mol?.activity_standard_value === 'nan'?'':mol?.activity_standard_value}}
+          {{mol?.activity_standard_units  === 'nan'?'':mol?.activity_standard_units}}</p>
       </ng-container>
     </td>
     <td>
       <ng-container *ngFor="let mole of molecules">
-        <p>
+        <p *ngIf="mole?.doc_doi !== 'nan'">
           <a href="https://doi.org/{{mole?.doc_doi}}" target="_blank">{{mole?.doc_doi}}</a>
             <button mat-button color="primary" (click)="openDocDialog(mole?.id)">(Detail)</button>
         </p>
+        <p *ngIf="mole?.doc_doi === 'nan'">
+          <button mat-button color="primary" (click)="openDocDialog(mole?.id)">(Detail)</button>
+        </p>
+
       </ng-container>
     </td>
   </tr>

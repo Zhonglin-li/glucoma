@@ -19,10 +19,10 @@ export class DocCardComponent implements OnInit {
 
   ngOnInit() {
     console.log('doc detail init');
-    // this.rest.getData(`target-related-mol-chembl/?filter{id}=${this.data.moleculeId}`)
-    //   .subscribe(data => {
-    //     this.molecule = data['ch_embl_small_molecule_all_infos'][0];
-    //   })
+    this.rest.getData(`target-related-mol-chembl/?filter{id}=${this.data.moleculeId}`)
+      .subscribe(data => {
+        this.molecule = data['ch_embl_small_molecule_all_infos'][0];
+      })
   }
 
 }

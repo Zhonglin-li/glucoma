@@ -1,7 +1,8 @@
-<h4>List of Drugs for Treatment of Other Disease</h4>
+<h4 class="badge badge-pill badge-info">List of Drugs for Treatment of Other Disease</h4>
+&nbsp;
 <mat-label>Selected by Target Name:&nbsp;</mat-label>
 <mat-form-field mdl-cell mdl-cell--2-col>
-  <mat-select [(ngModel)]="selectedTargetName" (change)="getDrugbankIds()"
+  <mat-select [(ngModel)]="selectedTargetName" (ngModelChange)="getDrugbankIds()"
               name="targetName">
     <mat-option *ngFor="let target of targets" [value]="target?.protein_description">{{target?.protein_description}}</mat-option>
   </mat-select>

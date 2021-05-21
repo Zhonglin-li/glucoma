@@ -38,6 +38,7 @@ export class DrugForTargetComponent implements OnInit {
   }
 
   private _getDrugbankIdByTargetName(page?, perPage?) {
+    console.log(this.selectedTargetName)
     this.rest.getDataList(`drugbankid/?filter{target_set.protein_description}=${this.selectedTargetName}` +
       `&sort[]=smiles`, page, perPage)
       .subscribe(data => {

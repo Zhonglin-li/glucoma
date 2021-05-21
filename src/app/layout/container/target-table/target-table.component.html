@@ -6,7 +6,7 @@
              matSort
              matSortActive="uniprot_accession"
              matSortDirection="desc"
-             class="data-table">
+             class="mat-elevation-z8">
     <ng-container matColumnDef="chembl_id" >
       <mat-header-cell *matHeaderCellDef>ChEMBL ID</mat-header-cell>
       <mat-cell *matCellDef="let row">
@@ -114,7 +114,7 @@
           <!--{{row.id | moleculeCount: 'bioactivities' | async}}-->
           <!--<ng-container *ngIf="!row.bioactivity_count">0</ng-container>-->
 
-
+          {{row.bioactivity_count}}
 
         </button>
       </mat-cell>
@@ -140,7 +140,7 @@
     <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
   </mat-table>
   <div>
-    <div class="mdl-grid mdl-grid--no-spacing">
+    <div class="mdl-grid mdl-grid--no-spacing" style="margin-top: 10px;">
 
       <mat-form-field class="mdl-cell mdl-cell--2-col">
         <mat-select placeholder="Custom displayed columns" multiple [(ngModel)]="displayedColumns">
@@ -154,7 +154,7 @@
           <b>{{tableTitle}}</b>
         </h5>
       </div>
-      <div class="mdl-cell mdl-cell--5-col">
+      <div class="mdl-cell mdl-cell--5-col" >
         <mat-paginator [length]="pageMeta?.total_results"
                        [pageSize]="pageMeta?.per_page"
                        [pageSizeOptions]="pageSizeOptions"

@@ -111,8 +111,8 @@ export class RestService {
   }
 
   // target prediction
-  postTargetPrediction(smiles: string, includeParam = ''): Observable<any> {
-    const body = {smiles: smiles};
+  postTargetPrediction(smiles: string,target:string, includeParam = ''): Observable<any> {
+    const body = {smiles: smiles, target: target};
     this.globalService.setLoading(true);
     return this.http.post(`${this.REST_HOST}/target-prediction/${includeParam}`, body)
       .pipe(finalize(() => this.globalService.setLoading(false)),

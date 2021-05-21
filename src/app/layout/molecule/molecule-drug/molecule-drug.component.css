@@ -14,3 +14,9 @@
 .jsme-border {
   border: 1px solid #ddd;
 }
+table{
+  width: 100%;
+}
+th{
+  width: 120px;
+}

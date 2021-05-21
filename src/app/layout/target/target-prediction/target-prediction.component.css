@@ -5,3 +5,11 @@
   white-space: normal;
   width: 100%;
 }
+th{
+  text-align: center;
+  vertical-align: middle;
+}
+tr>td{
+  text-align: center;
+  vertical-align: middle;
+}

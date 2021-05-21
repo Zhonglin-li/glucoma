@@ -1,8 +1,8 @@
 <!-- Drugs table-->
 <div *ngIf="drugs?.length || drugForTargets?.length">
-  <h3 class="text-position">Drug Search Results</h3>
+  <h3 class="text-position badge badge-pill badge-info">Drug Search Results</h3>
   <div *ngIf="drugs?.length">
-    <h4>Drugs for Glaucoma Treatment</h4>
+    <h4>Drugs for Diabetes Treatment</h4>
     <div class="mdl-grid">
       <div class="mdl-cell mdl-cell--3-col" *ngFor="let drug of drugs">
         <app-jsme [elementId]="drug?.id"
