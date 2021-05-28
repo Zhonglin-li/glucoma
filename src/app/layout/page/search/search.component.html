@@ -981,7 +981,7 @@
             >
             <br>
             <br>
-            <div class="col-sm-7 offset-1" id="filtform7">
+            <div class="col-sm-7 offset-3" id="filtform7">
               <app-jsme
                 [elementId]="'structure-search'"
                 [width]="'450px'"
@@ -990,7 +990,7 @@
                 >loading JSME widget
               </app-jsme>
             </div>
-            <div class="col-sm-3 align-self-center">
+            <!-- <div class="col-sm-3 align-self-center">
               <textarea
                 name="jsme"
                 class="smile-container"
@@ -1016,10 +1016,10 @@
                   Smiles must be at least 2 characters long!
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
           <br />
-          <small
+          <!-- <small
             id="drawStructureHelp"
             class="form-text text-muted col-sm-10 offset-1"
             style="font-size: 17px"
@@ -1028,32 +1028,31 @@
               >Convert</i
             >
             or you can not submit your structure.
-          </small>
+          </small> -->
         </div>
       </div>
     </div>
     <br />
     <br />
     <div class="form-group row">
-      <button
+      <!-- <button
         type="button"
         class="btn btn-outline-primary col-sm-1 offset-3"
         *ngIf="filter.mode == 'By Drawing Molecule from Editor'"
         (click)="getJsmeSmiles()"
       >
         Convert
-      </button>
+      </button> -->
       <button
-        type="submit"
+        type="button"
         class="btn btn-outline-primary col-sm-1 offset-5"
-        [disabled]="!filterForm.form.valid"
         *ngIf="filter.mode == 'By Drawing Molecule from Editor'"
-        (click)="onSubmit(jsmeSmiles)"
+        (click)="onSubmit()"
       >
         Submit
       </button>
       <button
-        type="submit"
+        type="button"
         class="btn btn-outline-primary col-sm-1 offset-5"
         [disabled]="!filterForm.form.valid"
         *ngIf="filter.mode == 'By Inputting Drug'"
@@ -1062,7 +1061,7 @@
         Submit
       </button>
       <button
-        type="submit"
+        type="button"
         class="btn btn-outline-primary col-sm-1 offset-5"
         [disabled]="!filterForm.form.valid"
         *ngIf="filter.mode == 'By Inputting Target'"
@@ -1071,7 +1070,7 @@
         Submit
       </button>
       <button
-        type="submit"
+        type="button"
         class="btn btn-outline-primary col-sm-1 offset-5"
         [disabled]="!filterForm.form.valid"
         *ngIf="filter.mode == 'By Inputting Pathway'"

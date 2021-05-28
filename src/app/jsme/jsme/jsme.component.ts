@@ -20,7 +20,7 @@ export class JsmeComponent implements OnInit, AfterViewInit, OnChanges {
   @Input() showDemo = false;
   // Please refer to http://peter-ertl.com/jsme/JSME_2017-02-26/doc.html for JSME options
   @Input() option: string;
-  smiles = '';
+  smiles = 'c1c[nH]cn1';
   applet;
   private _demoSmiles = 'c1c[nH]cn1';
   // private _demoSmiles = 'FC1=CC=C2OCC[C@]3(NC(=O)NC3=O)C2=C1';

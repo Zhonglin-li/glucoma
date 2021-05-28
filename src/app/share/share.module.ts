@@ -26,6 +26,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatSortModule} from '@angular/material/sort';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { JsmeModule } from '../jsme/jsme.module';
+import {NzModalModule} from 'ng-zorro-antd/modal';
 
 @NgModule({
   declarations: [],
@@ -58,6 +59,7 @@ import { JsmeModule } from '../jsme/jsme.module';
     MatSlideToggleModule,
     MatSortModule,
     MatFormFieldModule,
+    NzModalModule
   ],
   exports: [
     CommonModule,
@@ -88,6 +90,7 @@ import { JsmeModule } from '../jsme/jsme.module';
     MatSlideToggleModule,
     MatSortModule,
     MatFormFieldModule,
+    NzModalModule
   ]
 })
 export class ShareModule { }

@@ -16,7 +16,7 @@ export class RestService {
   private REST_HOST = environment.REST_HOST;
   constructor(private http: HttpClient,
     private globalService: GlobalService) { 
-      console.log(`rest host: ${this.REST_HOST}`);
+      // console.log(`rest host: ${this.REST_HOST}`);
     }
 
 
@@ -80,7 +80,7 @@ export class RestService {
     page = +(page) +1;
     const body = {smiles: smiles, similarity: similarity, substructure_search: 0};
     this.globalService.setLoading(true);
-    console.log(body);
+    // console.log(body);
     return this.http.post(`${this.REST_HOST}/target-related-mol-structure/search/${includeParam}&page=${page}&per_page=${perPage}`, body)
       .pipe(finalize(() => this.globalService.setLoading(false)),
       catchError(this.handleError));
@@ -92,7 +92,7 @@ export class RestService {
     page = +(page) + 1;
     const body = {smiles: smiles, similarity: 0, substructure_search: 1};
     this.globalService.setLoading(true);
-    console.log(body);
+    // console.log(body);
     return this.http.post(`${this.REST_HOST}/target-related-mol-structure/search/${includeParam}&page=${page}&per_page=${perPage}`, body)
       .pipe(finalize(() => this.globalService.setLoading(false)),
       catchError(this.handleError));

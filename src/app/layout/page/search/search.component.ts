@@ -5,6 +5,9 @@ import {TargetListParamType} from '../../../glu/enum/target-list-param-type.enum
 import {DrugListParamsType} from '../../../glu/enum/drug-list-param-type.enum';
 import {PathwayListParamType} from "../../../glu/enum/pathway-list-param-type.enum";
 import {JsmeComponent} from '../../../jsme/jsme/jsme.component';
+import { $ } from 'protractor';
+import {NzModalService} from 'ng-zorro-antd/modal'
+import { compilePipeFromMetadata } from '@angular/compiler';
 
 @Component({
   templateUrl: './search.component.html',
@@ -46,6 +49,7 @@ export class SearchComponent implements OnInit {
 
   constructor(private router: Router,
               private globalService: GlobalService,
+              private modal: NzModalService,
               ) { };
 
   ngOnInit() {
@@ -55,6 +59,7 @@ export class SearchComponent implements OnInit {
   getJsmeSmiles() {
     this.jsmeSmiles = this.jsme.smiles;
   }
+
 
   drugSearchTypeChange(selectedType: string) {
     this.drugKeyword = this.drugSearchTypeList.find(el => el.inputType === selectedType).value;
@@ -119,21 +124,36 @@ export class SearchComponent implements OnInit {
     }
   }
 
+  modalError(): void{
+    this.modal.error({
+      nzTitle: 'Error',
+      nzContent: '<b>Please draw a correct strucure!</b>',
+      nzOkText: 'Comfirm',
 
-  onSubmit(smiles: string) {
-    console.log(this.structureType, smiles, this.similarity)
+    });
+  }
+
+
+  onSubmit() {
+    // console.log(this.structureType, this.jsme.smiles, this.similarity)
     // console.log(this.structureType,smiles, this.similarity)
+    if (this.jsme.smiles){
       if (this.structureType === 'structure') {
         this.router.navigate(['molecule/molecule-drug'], {queryParams: {
           structureType: this.structureType,
-          smiles: smiles,
+          smiles: this.jsme.smiles,
           similarity: this.similarity
         }})
       } else if ( this.structureType === 'substructure') {
         this.router.navigate(['molecule/molecule-drug'], {queryParams: {
           structureType: this.structureType,
-          smiles: smiles,
+          smiles: this.jsme.smiles,
         }})
       }
+    }
+    else{
+      this.modalError()
+    }
+      
     }
 }
