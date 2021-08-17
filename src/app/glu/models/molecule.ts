@@ -3,6 +3,7 @@ import {Target} from './target';
 export interface Molecule {
   doc_doi?: string;
   doc_pubmed_id?: string;
+  molecule_chembl_id?: string;
   molecule_chembl_id_url?: string;
   activity_standard_value?: string;
   doc_pubmed_id_url?: string;
@@ -17,7 +18,6 @@ export interface Molecule {
   activity_standard_type?: string;
   docs_title?: string;
   activity_doc_id?: string;
-  molecule_chembl_id?: string;
   doc_chembl_id_url?: string;
   activity_assay_id?: string;
   assay_description?: string;

@@ -1,8 +1,8 @@
-<h4 class="badge badge-pill badge-info">List of Drugs for Treatment of Other Disease</h4>
+<h4 class="badge badge-pill badge-info">Ingredients of Herbs for Treatment of Other Disease</h4>
 &nbsp;
 <mat-label>Selected by Target Name:&nbsp;</mat-label>
 <mat-form-field mdl-cell mdl-cell--2-col>
-  <mat-select [(ngModel)]="selectedTargetName" (ngModelChange)="getDrugbankIds()"
+  <mat-select [(ngModel)]="selectedTargetName" (ngModelChange)="getHerbs()"
               name="targetName">
     <mat-option *ngFor="let target of targets" [value]="target?.gene">{{target?.gene}}</mat-option>
   </mat-select>
@@ -10,15 +10,15 @@
 
 
 <div class="mdl-grid grid-border">
-  <div class="mdl-cell mdl-cell--3-col jsme-border" *ngFor="let drug of drugbankIds">
-    <app-jsme [elementId]="drug?.id"
+  <div class="mdl-cell mdl-cell--3-col jsme-border" *ngFor="let herb of herbs">
+    <app-jsme [elementId]="herb?.id"
               [width]="'220px'"
               [height]="'250px'"
               [option]="'depict nozoom noshowdraganddropsymbolindepictmode'"
-              [molString]="drug?.smiles"
+              [molString]="herb?.molecule_smile"
     ></app-jsme>
-    <a href="{{drug?.url}}" target="_blank">{{drug?.drugbank_id}}</a>&nbsp;&nbsp;
-    <a href="{{drug?.url}}" target="_blank">{{drug?.generic_name}}</a>
+    <a href="{{herb?.molecule_herb_id_url}}" target="_blank">{{herb?.molecule_herb_id}}</a>&nbsp;&nbsp;
+    <a href="{{herb?.molecule_herb_id_url}}" target="_blank">{{herb?.generic_name}}</a>
   </div>
 </div>
 <div>

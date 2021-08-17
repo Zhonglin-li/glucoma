@@ -5,6 +5,7 @@ import {DrugForTargetsTableComponent} from '../container/drug-for-targets-table/
 import {NgModule} from '@angular/core';
 import {DrugForTargetComponent} from './drug-for-target/drug-for-target.component';
 import {DrugSearchComponent} from './drug-search/drug-search.component';
+import { DrugForHerbComponent } from './drug-for-herb/drug-for-herb.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,10 @@ const routes: Routes = [
   {
     path: 'drug-for-target',
     component: DrugForTargetComponent
+  },
+  {
+    path: 'drug-for-herb',
+    component: DrugForHerbComponent
   },
   {
     path: ':id',

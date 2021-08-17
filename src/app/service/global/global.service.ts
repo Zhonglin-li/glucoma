@@ -18,7 +18,7 @@ export class GlobalService {
               private zone: NgZone) {
     this.zone.runOutsideAngular(() => {
       window['jsmeOnLoad'] = () => {
-        console.log('JSME init');
+        // console.log('JSME init');
         this.JSMEApplet$.next(JSApplet);
       };
     });

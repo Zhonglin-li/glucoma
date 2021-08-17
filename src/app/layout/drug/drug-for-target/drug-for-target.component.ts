@@ -12,7 +12,7 @@ import {PageMeta} from '../../../glu/models/page-meta';
 
 export class DrugForTargetComponent implements OnInit {
   drugbankIds: DrugbankId[];
-  targets = [{protein_description:'All'}, {protein_description:'ssss'}];
+  targets = [];
   selectedTargetName = 'All';
   pageMeta: PageMeta | null;
   pageIndex: number;
@@ -37,9 +37,18 @@ export class DrugForTargetComponent implements OnInit {
     }
   }
 
+  // private _getDrugbankIdByTargetName(page?, perPage?) {
+  //   console.log(this.selectedTargetName)
+  //   this.rest.getDataList(`drugbankid/?filter{target_set.protein_description}=${this.selectedTargetName}` +
+  //     `&sort[]=smiles`, page, perPage)
+  //     .subscribe(data => {
+  //       this.drugbankIds = data['drug_bank_ids'];
+  //       this.pageMeta = data['meta'];
+  //     })
+  // }
   private _getDrugbankIdByTargetName(page?, perPage?) {
-    console.log(this.selectedTargetName)
-    this.rest.getDataList(`drugbankid/?filter{target_set.protein_description}=${this.selectedTargetName}` +
+    // console.log(this.selectedTargetName)
+    this.rest.getDataList(`drugbankid/?filter{target_set.gene}=${this.selectedTargetName}` +
       `&sort[]=smiles`, page, perPage)
       .subscribe(data => {
         this.drugbankIds = data['drug_bank_ids'];
@@ -55,12 +64,21 @@ export class DrugForTargetComponent implements OnInit {
       })
   }
 
+  // private _getTargetName() {
+  //   this.rest.getDataList(`target/?exclude[]=*&include[]=protein_description&sort[]=protein_description`, 0, 999999)
+  //     .subscribe(data => {
+  //       this.targets = data['targets'];
+  //       this.targets.unshift({protein_description: 'All'});
+  //       console.log(this.targets.length, this.targets)
+  //     })
+  // }
+
   private _getTargetName() {
-    this.rest.getDataList(`target/?exclude[]=*&include[]=protein_description&sort[]=protein_description`, 0, 999999)
+    this.rest.getDataList(`target/?exclude[]=*&include[]=gene&sort[]=gene`, 0, 999999)
       .subscribe(data => {
         this.targets = data['targets'];
-        this.targets.unshift({protein_description: 'All'});
-        console.log(this.targets.length, this.targets)
+        this.targets.unshift({gene: 'All'});
+        // console.log(this.targets.length, this.targets)
       })
   }
 

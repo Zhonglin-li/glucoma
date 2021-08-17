@@ -80,6 +80,7 @@ export class TargetTableComponent implements OnInit, AfterViewInit {
         })
       )
       .subscribe(data => {
+        console.log(data)
         this.dataSource.data = data;
       });
   }

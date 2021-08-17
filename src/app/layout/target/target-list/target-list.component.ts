@@ -56,6 +56,10 @@ export class TargetListComponent implements OnInit {
             const moleculeChemblId = params.get('moleculeChemblId');
             return `target/?filter{chembl_small_molecules_all_infos.molecule_chembl_id}=${moleculeChemblId}${this.includeParams}`
           }
+          case TargetListParamType.molecule_herb_id: {
+            const moleculeHerbId = params.get('moleculeHerbId');
+            return `target/?filter{herbs.molecule_herb_id}=${moleculeHerbId}${this.includeParams}`
+          }
           case TargetListParamType.pathway_id: {
             const pathwayId = +params.get('pathwayId');
             return `target/?filter{pathway_set.id}=${pathwayId}${this.includeParams}`

@@ -1,0 +1,2 @@
+/home/cad/github-pack/glu/glucoma/src/assets/video/Diabetes_video.webm filter=lfs diff=lfs merge=lfs -text
+src/assets/video/Diabetes_video.webm filter=lfs diff=lfs merge=lfs -text

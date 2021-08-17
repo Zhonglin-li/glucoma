@@ -11,6 +11,7 @@ import { SeaComponent } from './sea/sea.component';
 import {ChemicalScreeningComponent} from "./chemical-screening/chemical-screening.component";
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {FileUploadModule} from 'ng2-file-upload';
 
 
 
@@ -23,6 +24,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     PageNotFoundComponent,
     SeaComponent,
     ChemicalScreeningComponent,
+    
   ],
   imports: [
     CommonModule,
@@ -31,18 +33,19 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     ReactiveFormsModule,
     MatTabsModule,
     MatFormFieldModule,
+    FileUploadModule,
 
   ],  
   exports: [
-    // HomeComponent,
-    // HelpComponent,
-    // ContactComponent,
-    // SearchComponent,
-    // PageNotFoundComponent,
-    // SeaComponent,
-    // ChemicalScreeningComponent,
-    // FormsModule,
-    // ShareModule
+    HomeComponent,
+    HelpComponent,
+    ContactComponent,
+    SearchComponent,
+    PageNotFoundComponent,
+    SeaComponent,
+    ChemicalScreeningComponent,
+    FormsModule,
+    ShareModule,
   ]
 })
 

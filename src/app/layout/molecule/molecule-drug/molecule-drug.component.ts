@@ -10,6 +10,7 @@ import {MoleculeStructure} from '../../../glu/models/molecule-structure';
 import {Subscription} from "rxjs";
 import {DrugbankId} from '../../../glu/models/drugbank-id';
 import {MatTableDataSource} from '@angular/material/table';
+import { Herb } from 'src/app/glu/models/herb';
 
 @Component({
   selector: 'app-molecule-drug',
@@ -24,21 +25,27 @@ export class MoleculeDrugComponent implements OnInit, OnDestroy {
   structureType: string;
   drugPageMeta: PageMeta | null;
   moleculePageMeta: PageMeta | null;
+  herbPageMeta: PageMeta | null;
   drugForTargetPageMeta: PageMeta | null;
   moleculesDataSource = new MatTableDataSource();
+  herbDataSource = new MatTableDataSource();
   drugDataSource = new MatTableDataSource();
   drugForTargetDataSource = new MatTableDataSource();
   drugs: Drug[] | null;
   tableTitle = '';
   molecules: MoleculeStructure[] | null;
   drugForTargets: DrugbankId[] | null;
+  herbs: Herb[] | null;
   moleculeSubscription: Subscription;
+  herbSubscription: Subscription;
   drugSubscription: Subscription;
   drugForTargetSubscription: Subscription;
   pageSizeOptions = [5, 10, 20, 50, 100];
   moleculeIncludeParams = '?sort[]=molecule_chembl_id' + '&exclude[]=target_set.*&include[]=target_set.id';
+  herbIncludeParams = '?sort[]=molecule_herb_id' + '&exclude[]=target_set.*&include[]=target_set.id';
   drugIncludeParams = '&sort[]=id&exclude[]=pathway_set.*&exclude[]=targets.*';
   displayedColumns = ['chembl_id', 'formula', 'mol_weight', 'alogp', 'psa', 'rtb', 'hbd', 'hba', 'targets'];
+  herbDisplayedColumns = ['herb_id', 'formula', 'mol_weight', 'alogp', 'psa', 'rtb', 'hbd', 'hba', 'targets'];
   allColumns = ['chembl_id', 'formula', 'mol_weight', 'alogp', 'psa', 'rtb', 'hbd', 'hba', 'targets'];
   drugDisplayedColumns = ['drugbank_id', 'drug_name', 'formula', 'mol_weight', 'alogp', 'psa', 'rtb', 'hbd', 'hba'];
   drugForTargetDisplayedColumns = ['drugbank_id', 'drug_name', 'formula', 'mol_weight', 'alogp', 'psa', 'rtb', 'hbd', 'hba'];
@@ -59,7 +66,8 @@ export class MoleculeDrugComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.drugSubscription.unsubscribe();
     this.moleculeSubscription.unsubscribe();
-    this.drugForTargetSubscription.unsubscribe()
+    this.drugForTargetSubscription.unsubscribe();
+    this.herbSubscription.unsubscribe()
   }
 
   private _postMoleculeDrug() {
@@ -71,12 +79,15 @@ export class MoleculeDrugComponent implements OnInit, OnDestroy {
         this._postDrugs(0,5);
         this._postDrugForTarget(0, 5);
         this._postMolecules(0,5);
+        this._postHerbs(0,5);
+
       } else if (this.structureType === 'structure') {
         const similarity = params.get('similarity');
         this.body = {smiles: this.smiles, similarity: similarity, substructure_search: 0};
         this._postDrugs(0,5);
         this._postDrugForTarget(0, 5);
         this._postMolecules(0,5);
+        this._postHerbs(0,5);
       }
     })
   }
@@ -86,11 +97,23 @@ export class MoleculeDrugComponent implements OnInit, OnDestroy {
      `target-related-mol-structure/search/?${this.moleculeIncludeParams}`,
      this.body, page, perPage)
       .subscribe(data => {
+        console.log('chembl', data)
           this.molecules = data['ch_embl_small_molecules'];
           this.moleculePageMeta = data['meta'];
           // 去掉重复的小分子结构
           this.moleculesDataSource.data = this.molecules;
       })
+  }
+  
+  private _postHerbs(page?, perPage?) {
+    this.herbSubscription = this.rest.postDataList(
+      `herb/search/?${this.herbIncludeParams}`,
+      this.body, page, perPage
+    ).subscribe(data => {
+      this.herbs = data['herbs'];
+      this.herbPageMeta = data['meta'];
+      this.herbDataSource.data = this.herbs
+    })
   }
 
   private _postDrugs(page?, perPage?) {
@@ -121,6 +144,11 @@ export class MoleculeDrugComponent implements OnInit, OnDestroy {
     })
   }
 
+  goHerbTargetList(moleculeHerbId: string) {
+    this.globalService.gotoTargetList(TargetListParamType.molecule_herb_id, {
+      moleculeHerbId: moleculeHerbId,
+    })
+  }
 
   drugPageChange(event) {
     this._postDrugs(event.pageIndex, event.pageSize)
@@ -128,6 +156,10 @@ export class MoleculeDrugComponent implements OnInit, OnDestroy {
 
   moleculePageChange(event) {
     this._postMolecules(event.pageIndex, event.pageSize);
+  }
+
+  herbPageChange(event) {
+    this._postHerbs(event.pageIndex, event.pageSize);
   }
 
   drugForTargetPageChange(event) {

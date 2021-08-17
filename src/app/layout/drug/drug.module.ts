@@ -9,7 +9,8 @@ import {CardModule} from '../../share/card/card.module';
 import {CommonModule} from '@angular/common';
 import { DrugSearchComponent } from './drug-search/drug-search.component';
 import {MatSelectModule} from '@angular/material/select';
-import {MatFormFieldModule} from '@angular/material/form-field'
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { DrugForHerbComponent } from './drug-for-herb/drug-for-herb.component'
 
 @NgModule({
   imports: [
@@ -26,6 +27,7 @@ import {MatFormFieldModule} from '@angular/material/form-field'
     DrugDetailComponent,
     DrugForTargetComponent,
     DrugSearchComponent,
+    DrugForHerbComponent,
 
   ]
 })

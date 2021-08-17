@@ -3,6 +3,7 @@ export enum TargetListParamType {
   drug_target, // drug id
   entry_name, // target name
   molecule_chembl_id,
+  molecule_herb_id,
   pathway_id,
   target_name,
   gene_name,

@@ -23,11 +23,11 @@ export class MoleculePropertiesCardComponent implements OnInit {
 
   ngOnInit() {
     console.log('molecule properties card init');
-    // this.rest.getData(`target-related-mol-structure/?filter{molecule_chembl_id}=${this.data.moleculeChemblId}${this.includeParams}`)
-    //   .subscribe(data => {
-    //     this.moleculeStructure = data['ch_embl_small_molecules'][0];
-    //     console.log('molecule', this.moleculeStructure)
-    //   })
+    this.rest.getData(`target-related-mol-structure/?filter{molecule_chembl_id}=${this.data.moleculeChemblId}${this.includeParams}`)
+      .subscribe(data => {
+        this.moleculeStructure = data['ch_embl_small_molecules'][0];
+        // console.log('molecule', this.moleculeStructure)
+      })
   }
 
   goTargetList(moleculeChemblId: string) {

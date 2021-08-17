@@ -94,17 +94,35 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="search"><span>Search</span></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="sea"><span>Prediction</span></a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span>Prediction</span>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" routerLink="sea"><span>Single prediction</span></a>
+            <a class="dropdown-item" routerLink="chemical-screening"><span>Batch Prediction</span></a>
+          </div>
+          <!-- <a class="nav-link" routerLink="sea"><span>Prediction</span></a> -->
         </li>
+        <!-- <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span>TOOL</span>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" routerLink="sea"><span>Target Prediction</span></a>
+            <a class="dropdown-item" routerLink="chemical-screening"><span>Chemical Screening</span></a>
+          </div>
+        </li> -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span>Compounds</span>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" (click)="goDrugList()"><span>Drugs for Diabetes Treatment</span></a>
-            <a class="dropdown-item" [routerLink]="['drug-glau-treatment/drug-for-target']"><span>Drugs Targeting Diabetes Related<br>
+            <a class="dropdown-item" (click)="goDrugList()"><span>Drugs for Diabetic retinopathy Treatment</span></a>
+            <a class="dropdown-item" [routerLink]="['drug-glau-treatment/drug-for-target']"><span>Drugs Targeting Diabetic retinopathy Related<br>
               Proteins for Treatment of Other Diseases</span></a>
+            <a class="dropdown-item" [routerLink]="['drug-glau-treatment/drug-for-herb']"><span>Ingredients of herbs Targeting Diabetic retinopathy Related<br>
+              Proteins</span></a>
           </div>
         </li>
 
